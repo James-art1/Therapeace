@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission & Vision - Therapeace</title>
+    <link rel="stylesheet" href="mv.css">
+</head>
+<body>
+
+    <!-- Parallax Section 1 -->
+    <section class="parallax parallax1">
+        <div class="text-overlay">
+            <h1>Our Mission</h1>
+        </div>
+    </section>
+    
+    <!-- Mission Content -->
+    <section class="content-section reveal">
+        <h2>Empowering Minds, Embracing Healing</h2>
+        <p>At <strong>Therapeace</strong>, our mission is to cultivate a sanctuary where every individual feels heard, understood, and empowered. 
+           We are dedicated to breaking the barriers of stigma surrounding mental health and creating a safe, accessible, and judgment-free space 
+           where emotional well-being is nurtured. Through innovative counseling solutions and compassionate guidance, we help individuals 
+           navigate their emotions, overcome challenges, and embrace a life of peace and fulfillment.</p>
+    </section>
+
+    <!-- Parallax Section 2 -->
+    <section class="parallax parallax2">
+        <div class="text-overlay">
+            <h1>Our Vision</h1>
+        </div>
+    </section>
+    
+    <!-- Vision Content -->
+    <section class="content-section reveal">
+        <h2>A Future Where Mental Well-being Thrives</h2>
+        <p>We envision a world where mental health is prioritized, understood, and celebrated. Our goal is to build a community where 
+           seeking support is seen as a strength, not a weakness. <strong>Therapeace</strong> strives to lead the transformation by integrating 
+           technology with compassion, offering accessible and innovative mental health solutions that foster resilience, healing, 
+           and lasting inner peace.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About us.html">About Us</a></li>
+                    <li><a href="Service.html">Our Services</a></li>
+                    <li><a href="Blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2025 Therapeace. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Scroll Reveal Effect -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function revealOnScroll() {
+                const reveals = document.querySelectorAll('.reveal');
+                reveals.forEach((element) => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = element.getBoundingClientRect().top;
+                    const revealPoint = 150; // Adjust for when effect should trigger
+
+                    if (elementTop < windowHeight - revealPoint) {
+                        element.classList.add("visible");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll(); // Trigger on page load
+        });
+    </script>
+
+</body>
+</html>

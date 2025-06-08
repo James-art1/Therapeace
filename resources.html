@@ -1,0 +1,58 @@
+<?php
+session_start();
+require 'db_connect.php';
+
+// Ensure user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: Login.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Fetch assigned resources + public resources
+$query = "SELECT DISTINCT r.* 
+          FROM resources r
+          LEFT JOIN resource_assignments ra ON r.id = ra.resource_id
+          WHERE ra.user_id = '$user_id' OR r.is_public = 1
+          ORDER BY r.uploaded_at DESC";
+
+$result = mysqli_query($conn, $query);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Resources</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <main class="main-content">
+            <h2>Available Resources</h2>
+
+            <?php if (mysqli_num_rows($result) > 0) { ?>
+                <table border="1">
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>File</th>
+                    </tr>
+                    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row['title']) ?></td>
+                            <td><?= htmlspecialchars($row['description']) ?></td>
+                            <td><?= htmlspecialchars($row['category']) ?></td>
+                            <td><a href="<?= htmlspecialchars($row['file_path']) ?>" target="_blank">View File</a></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            <?php } else { ?>
+                <p>No resources found.</p>
+            <?php } ?>
+
+        </main>
+    </div>
+</body>
+</html>

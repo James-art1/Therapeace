@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapeace Appointment</title>
+    <link rel="stylesheet" href="Appointment Page.css">
+</head>
+<body>
+    <div class="appointment-container">
+        <h1>Book Your Appointment</h1>
+        <p>Fill out the form below to schedule your counseling session.</p>
+        <form action="#" class="appointment-form">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="services">Services We Offer</label>
+                <select id="services" name="services" required>
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="academic-counseling">Academic Counseling</option>
+                    <option value="career-guidance">Career Guidance</option>
+                    <option value="stress-management">Stress Management</option>
+                    <option value="mental-health-support">Mental Health Support</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="male" required> Male</label>
+                    <label><input type="radio" name="gender" value="female" required> Female</label>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="course">Course</label>
+                <select id="course" name="course" required>
+                    <option value="" disabled selected>Select your course</option>
+                    <option value="bscit">BSc IT</option>
+                    <option value="bms">BMS</option>
+                    <option value="bcom">BCom</option>
+                    <option value="bba">BBA</option>
+                </select>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn submit">Submit</button>
+                <button type="reset" class="btn reset">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

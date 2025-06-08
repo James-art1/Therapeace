@@ -1,0 +1,162 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffcccc, #ccffff); /* Red and blue gradient background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 250px;
+}
+
+/* Appointment Container */
+.appointment-container {
+    background-color: #ffffff; /* White background for the form */
+    border: 3px solid #4CAF50; /* Green border */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    animation: fadeIn 1.5s ease-in-out;
+    text-align: center;
+}
+
+.appointment-container h1 {
+    font-size: 2rem;
+    color: #f44336; /* Red */
+    margin-bottom: 10px;
+}
+
+.appointment-container p {
+    font-size: 1rem;
+    color: #0000ff; /* Blue */
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
+.appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: #4CAF50; /* Green */
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #f44336; /* Red border */
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    border-color: #0000ff; /* Blue on focus */
+    transform: scale(1.02); /* Slight scale effect */
+    outline: none;
+}
+
+.radio-group label {
+    margin-right: 15px;
+    font-size: 0.9rem;
+    color: #4CAF50; /* Green */
+}
+
+.radio-group input {
+    margin-right: 5px;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    width: 45%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn.submit {
+    background-color: #4CAF50; /* Green button */
+    color: #ffffff;
+}
+
+.btn.submit:hover {
+    background-color: #43a047; /* Darker green */
+    transform: scale(1.05);
+}
+
+.btn.reset {
+    background-color: #f44336; /* Red button */
+    color: #ffffff;
+}
+
+.btn.reset:hover {
+    background-color: #d32f2f; /* Darker red */
+    transform: scale(1.05);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects for Inputs */
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+select:hover {
+    border-color: #4CAF50; /* Green hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .btn {
+        width: 100%; /* Buttons take full width on smaller screens */
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

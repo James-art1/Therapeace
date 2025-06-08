@@ -1,0 +1,206 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: linear-gradient(135deg, #7f00ff, #e100ff);
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Set body to column layout */
+    min-height: 100vh; /* Ensures it covers the full viewport */
+    font-size: 16px;
+}
+
+.container {
+    flex: 1; /* Allows the main content to grow and push the footer down */
+    width: 90%;
+    max-width: 1200px;
+    padding: 30px;
+    margin: 0 auto; /* Center the content horizontally */
+}
+
+/* Service Wrapper */
+.service-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.service h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.service p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Cards Layout */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Card Styles */
+.card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.card i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #ff4081;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+.card button {
+    background: linear-gradient(90deg, #ff6a95, #ff4081);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.card button:hover {
+    background: linear-gradient(90deg, #ff4081, #ff6a95);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover i {
+    transform: rotate(360deg);
+    color: #fff;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Pushes the footer to the bottom of the page */
+}
+
+footer ul {
+    list-style: none;
+    padding: 10px;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #ff6f61;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+footer ul li a:hover {
+    color: #fff;
+}
+
+footer p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .service h1 {
+        font-size: 2rem;
+    }
+
+    .service p {
+        font-size: 1rem;
+    }
+}

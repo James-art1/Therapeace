@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapeace - Ratings</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="l1.png" alt="Therapeace Logo">
+                <h1>Therapeace</h1>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="feedback.php"><i class="fas fa-comments"></i> Feedback</a></li>
+                <li><a href="ratings.html" class="active"><i class="fas fa-star"></i> Ratings</a></li>
+                <li><a href="appointments.html"><i class="fas fa-calendar"></i> Appointments</a></li>
+                <li><a href="resources.php"><i class="fas fa-book"></i> Resources</a></li>
+                <li><a href="profile.php"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="support.html"><i class="fas fa-life-ring"></i> Help & Support</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h2>Ratings</h2>
+                </div>
+                <div class="top-bar-right">
+                    <i class="fas fa-bell notification-icon"></i>
+                    <img src="user-avatar.png" alt="User Avatar" class="user-avatar">
+                </div>
+            </header>
+
+            <!-- Ratings Section -->
+            <section class="ratings-section">
+                <div class="card">
+                    <h3>Rate Your Experience</h3>
+                    <p>We value your input! Please rate your sessions and overall experience.</p>
+                    <div class="rating-stars">
+                        <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+                        <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+                        <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+                        <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                        <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                    </div>
+                    <textarea id="ratingFeedback" rows="5" placeholder="Share your thoughts about your experience..."></textarea>
+                    <button class="submit-btn" id="submitRating">Submit Rating</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Star Rating Logic
+        const stars = document.querySelectorAll('.star');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', () => {
+                resetStars();
+                highlightStars(star.dataset.value);
+            });
+
+            star.addEventListener('mouseout', () => {
+                resetStars();
+                if (selectedRating > 0) highlightStars(selectedRating);
+            });
+
+            star.addEventListener('click', () => {
+                selectedRating = star.dataset.value;
+                alert(`You rated ${selectedRating} star(s)!`);
+            });
+        });
+
+        function resetStars() {
+            stars.forEach(star => star.classList.remove('highlighted'));
+        }
+
+        function highlightStars(rating) {
+            for (let i = 0; i < rating; i++) {
+                stars[i].classList.add('highlighted');
+            }
+        }
+
+        // Submit Rating
+        document.getElementById('submitRating').addEventListener('click', () => {
+            const feedback = document.getElementById('ratingFeedback').value;
+            if (!selectedRating) {
+                alert('Please select a star rating.');
+                return;
+            }
+            if (!feedback.trim()) {
+                alert('Please provide feedback.');
+                return;
+            }
+            alert('Thank you for your rating and feedback!');
+            document.getElementById('ratingFeedback').value = '';
+            selectedRating = 0;
+            resetStars();
+        });
+    </script>
+</body>
+</html>

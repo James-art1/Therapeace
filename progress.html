@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapeace - Progress</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="l1.png" alt="Therapeace Logo">
+                <h1>Therapeace</h1>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="progress.html" class="active"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="feedback.php"><i class="fas fa-comments"></i> Feedback</a></li>
+                <li><a href="ratings.html"><i class="fas fa-star"></i> Ratings</a></li>
+                <li><a href="appointments.html"><i class="fas fa-calendar"></i> Appointments</a></li>
+                <li><a href="resources.php"><i class="fas fa-book"></i> Resources</a></li>
+                <li><a href="profile.php"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="support.html"><i class="fas fa-life-ring"></i> Help & Support</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h2>Progress Overview</h2>
+                </div>
+                <div class="top-bar-right">
+                    <i class="fas fa-bell notification-icon"></i>
+                    <img src="user-avatar.png" alt="User Avatar" class="user-avatar">
+                </div>
+            </header>
+
+            <!-- Dynamic Content -->
+            <section class="progress-section">
+                <div class="card progress-card">
+                    <h3>Progress Chart</h3>
+                    <canvas id="progressChart"></canvas>
+                </div>
+                <div class="card goals-card">
+                    <h3>Goals Achieved</h3>
+                    <ul>
+                        <li>Session 1: Understanding Triggers</li>
+                        <li>Session 2: Coping Mechanisms</li>
+                        <li>Session 3: Emotional Balance</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        const progressChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'In Progress', 'Pending'],
+                datasets: [{
+                    label: 'Progress',
+                    data: [70, 20, 10],
+                    backgroundColor: ['#4caf50', '#ff9800', '#f44336'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                },
+            },
+        });
+    </script>
+</body>
+</html>

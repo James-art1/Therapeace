@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form" id="loginForm" action="Login.php" method="post" onsubmit="return validateForm()">
+            <h1>Login</h1>
+            <div class="input-group">
+                <input type="text" id="full_name" name="full_name" placeholder="" required>
+                <label for="full_name">Username</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember Me</label>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+            <p class="redirect">
+                Don’t have an account? <a href="Sign up.html">Sign up here</a>
+            </p>
+        </form>
+
+    </div>
+    		<script>
+function validateForm() {
+  const username = document.getElementById('full_name').value.trim();
+  const password = document.getElementById('password').value.trim();
+  if (!username || !password) {
+    showMessage('Please fill in all fields.', 'error');
+    return false;
+  }
+  return true;
+}
+</script>
+</body>
+</html>

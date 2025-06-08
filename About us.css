@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background: linear-gradient(to right, #8EC5FC, #E0C3FC); /* Smooth gradient background */
+    transition: background-color 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Heading Animation */
+.heading {
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+    opacity: 0;
+    animation: slideDown 1s ease-out forwards;
+}
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.heading h1 {
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+.heading h2 {
+    font-size: 24px;
+    margin-top: 10px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* About Us Section */
+.about-us {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    margin: auto;
+    gap: 20px;
+    padding: 40px 0;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in-out 0.5s forwards;
+}
+@keyframes fadeInUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Image Animation */
+.images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.images img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease-out 0.7s forwards;
+}
+@keyframes slideLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+.images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Content Animation */
+.content {
+    flex: 1;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: slideRight 1s ease-out 1s forwards;
+}
+@keyframes slideRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+.content h1 {
+    color: #36455c;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+.content p {
+    color: #555;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Read More Button Animation */
+.read-more {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    opacity: 0;
+    animation: bounceIn 1s ease-out 1.3s forwards;
+}
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.read-more a {
+    text-decoration: none;
+    color: white;
+}
+.read-more:hover {
+    background: linear-gradient(135deg, #ff758c, #ff6472);
+    transform: scale(1.1);
+}
+
+/* Footer Animation */
+footer {
+    background: linear-gradient(135deg, #333, #444);
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    margin-top: 50px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 1.5s forwards;
+}
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+footer ul li {
+    display: inline;
+    margin: 0 15px;
+}
+footer ul li a {
+    text-decoration: none;
+    color: #ff6f61;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+footer ul li a:hover {
+    color: #fff;
+}
+footer p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .about-us {
+        flex-direction: column;
+        text-align: center;
+    }
+    .content {
+        width: 100%;
+        padding: 20px;
+    }
+    .images img {
+        max-width: 100%;
+    }
+}

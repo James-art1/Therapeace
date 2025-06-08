@@ -1,0 +1,116 @@
+<?php
+session_start();
+include 'db_connection.php'; // Ensure this file connects to the database
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php"); // Redirect to login if not authenticated
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Fetch profile details from the database
+$sql = "SELECT * FROM profiles WHERE user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$profile = $result->fetch_assoc();
+
+// If no profile exists, use default values
+if (!$profile) {
+    $profile = [
+        'profile_picture' => 'default-avatar.png',
+        'full_name' => 'Not Set',
+        'email' => 'Not Set',
+        'phone' => 'Not Set',
+        'address' => 'Not Set',
+        'bio' => 'Not Set'
+    ];
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapeace - Profile</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="l1.png" alt="Therapeace Logo">
+                <h1>Therapeace</h1>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="progress.php"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="feedback.php"><i class="fas fa-comments"></i> Feedback</a></li>
+                <li><a href="ratings.php"><i class="fas fa-star"></i> Ratings</a></li>
+                <li><a href="appointments.php"><i class="fas fa-calendar"></i> Appointments</a></li>
+                <li><a href="resources.php"><i class="fas fa-book"></i> Resources</a></li>
+                <li><a href="profile.php" class="active"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="support.php"><i class="fas fa-life-ring"></i> Help & Support</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h2>My Profile</h2>
+                </div>
+                <div class="top-bar-right">
+                    <i class="fas fa-bell notification-icon"></i>
+                    <img src="<?php echo htmlspecialchars($profile['profile_picture']); ?>" alt="User Avatar" class="user-avatar">
+                </div>
+            </header>
+
+            <!-- Profile Section -->
+            <section class="profile-section">
+                <div class="profile-card">
+                    <img src="<?php echo htmlspecialchars($profile['profile_picture']); ?>" alt="Profile Picture" class="profile-picture">
+                    <h3><?php echo htmlspecialchars($profile['full_name']); ?></h3>
+                    <p>Email: <?php echo htmlspecialchars($profile['email']); ?></p>
+                    <p>Phone: <?php echo htmlspecialchars($profile['phone']); ?></p>
+                    <p>Address: <?php echo htmlspecialchars($profile['address']); ?></p>
+                    <p>Bio: <?php echo htmlspecialchars($profile['bio']); ?></p>
+                </div>
+
+                <div class="profile-details">
+                    <h3>Update Profile</h3>
+                    <form id="profile-form" action="update_profile.php" method="POST" enctype="multipart/form-data">
+                        <label for="full_name">Full Name:</label>
+                        <input type="text" id="full_name" name="full_name" value="<?php echo htmlspecialchars($profile['full_name']); ?>" required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($profile['email']); ?>" disabled>
+
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($profile['phone']); ?>">
+
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($profile['address']); ?>">
+
+                        <label for="bio">Bio:</label>
+                        <textarea id="bio" name="bio"><?php echo htmlspecialchars($profile['bio']); ?></textarea>
+
+                        <label for="profile_picture">Profile Picture:</label>
+                        <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+
+                        <button type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

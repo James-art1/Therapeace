@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="Sign up.css">
+</head>
+<body>
+    <div class="signup-container">
+        <form class="signup-form" action="Sign up.php" method="post" id="signupForm">
+            <h1>Sign Up</h1>
+
+            <div class="input-group">
+                <input type="text" id="full_name" name="full_name" placeholder=" " required>
+                <label for="full_name">Full Name</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" placeholder=" " required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder=" " required>
+                <label for="password">Password</label>
+            </div>
+
+            <button type="submit" class="signup-btn">Sign Up</button>
+
+      
+
+
+            <p class="redirect">
+                Already have an account? <a href="Login.html">Login here</a>
+            </p>
+        </form>
+  
+
+<script>
+  // Your Firebase configuration
+  const firebaseConfig = {
+      apiKey: "AIzaSyA-3uDEG6lPa8upbHi6OHU2TNHInuqSGWA",
+      authDomain: "sign-up-2f973.firebaseapp.com",
+      projectId: "sign-up-2f973",
+      storageBucket: "sign-up-2f973.firebasestorage.app",
+      messagingSenderId: "789739194460",
+      appId: "1:789739194460:web:ef40442294101b4bc17e99",
+      measurementId: "G-CG0HDD6XZ6"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Email and Password Sign-Up
+  document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent page reload
+
+      var fullName = document.getElementById("full_name").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+              var user = userCredential.user;
+              console.log("User signed up:", user);
+              alert("Sign-up successful! Welcome, " + fullName);
+              window.location.href = "dashboard.html"; // Redirect
+          })
+          .catch((error) => {
+              console.error(error);
+              alert("Sign-up failed: " + error.message);
+          });
+  });
+
+  // Google Sign-Up Function
+  function googleSignUp() {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider)
+          .then((result) => {
+              var user = result.user;
+              console.log("User signed in with Google:", user);
+              alert("Sign-up successful! Welcome, " + user.displayName);
+              window.location.href = "dashboard.html";
+          })
+          .catch((error) => {
+              console.error(error);
+              alert("Sign-in failed: " + error.message);
+          });
+  }
+</script>
+
+
+</body>
+</html>
